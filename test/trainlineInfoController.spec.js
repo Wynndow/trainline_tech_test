@@ -3,28 +3,33 @@ describe('trainlineInfoController', function() {
 
   describe('initialization', function() {
 
-    var ctrl, fakeFetch, scope;
+    var ctrl, fakeJsonFactory, fakeTimeFactory, scope;
 
     beforeEach(function() {
       module(function($provide) {
-        fakeFactory = jasmine.createSpyObj('fakeFactory', ['fetch']);
+        fakeJsonFactory = jasmine.createSpyObj('fakeJsonFactory', ['fetch']);
+        fakeTimeFactory = jasmine.createSpyObj('fakeTimeFactory', ['calculate']);
         $provide.factory('JsonFetcher', function() {
-          return fakeFactory;
+          return fakeJsonFactory;
+        });
+        $provide.factory('timeDifference', function() {
+          return fakeTimeFactory;
         });
       });
     });
 
     beforeEach(inject(function($q, $rootScope, $controller) {
       scope = $rootScope;
-      fakeFactory.fetch.and.returnValue($q.when({
-        data: "Fake data"
+      fakeJsonFactory.fetch.and.returnValue($q.when({
+        data: "Fake Data"
       }));
+      fakeTimeFactory.calculate.and.returnValue("Fake Data")
       ctrl = $controller('trainlineInfoController');
     }));
 
-    it('fetches departure info from factory', function() {
+    it('fetches departure info from factorys', function() {
       scope.$apply();
-      expect(ctrl.departureBoardInfo).toEqual("Fake data");
+      expect(ctrl.departureBoardInfo).toEqual("Fake Data");
     });
 
   });

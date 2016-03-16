@@ -1,9 +1,10 @@
-trainlineInfo.controller('trainlineInfoController', ['JsonFetcher', function(JsonFetcher) {
+trainlineInfo.controller('trainlineInfoController', ['JsonFetcher', 'timeDifference', function(JsonFetcher, timeDifference) {
 
  var self = this;
 
  JsonFetcher.fetch().then(function(response) {
-   self.departureBoardInfo = response.data;
+   trainData = response.data;
+   self.departureBoardInfo = timeDifference.calculate(trainData);
  });
 
 }]);

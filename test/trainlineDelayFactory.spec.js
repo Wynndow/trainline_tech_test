@@ -3,7 +3,12 @@ describe('Delay Factory', function() {
 
   describe('#calculate', function() {
 
-    var sample_data = {"callingPoints": [{"scheduled": "15:25", "expected": "15:35"}]};
+    var sample_data = {
+      "callingPoints": [{
+        "scheduled": "15:25",
+        "expected": "15:35"
+      }]
+    };
 
     var timeDiff;
 
@@ -19,6 +24,7 @@ describe('Delay Factory', function() {
   });
 
   describe('#toMinutes', function() {
+    
     var time = "15:25";
 
     beforeEach(inject(function(timeDifference) {
