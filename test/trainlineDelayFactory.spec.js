@@ -17,14 +17,14 @@ describe('Delay Factory', function() {
     }));
 
     it('can give the time difference in minutes', function() {
-      timeDiff.calculate(sample_data);
-      expect(sample_data.callingPoints[0].delay).toEqual(10);
+      var output = timeDiff.calculate(sample_data);
+      expect(output.callingPoints[0].delay).toEqual(10);
     });
 
   });
 
   describe('#toMinutes', function() {
-    
+
     var time = "15:25";
 
     beforeEach(inject(function(timeDifference) {

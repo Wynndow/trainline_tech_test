@@ -6,6 +6,7 @@ trainlineInfo.factory('timeDifference', function() {
         var point = trainData.callingPoints[i];
         point.delay = this.toMinutes(point.expected) - this.toMinutes(point.scheduled);
       }
+      return trainData
     },
     toMinutes: function(timeString) {
       splitTime = timeString.split(':');
