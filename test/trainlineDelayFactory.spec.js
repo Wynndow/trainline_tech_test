@@ -3,12 +3,20 @@ describe('Delay Factory', function() {
 
   describe('#calculate', function() {
 
-    var sample_data = {
+    var lateData = {
       "callingPoints": [{
         "scheduled": "15:25",
         "expected": "15:35"
       }]
     };
+
+    var onTimeData = {
+      "callingPoints": [{
+        "scheduled": "15:25",
+        "expected": "15:25"
+      }]
+    };
+
 
     var timeDiff;
 
@@ -17,8 +25,13 @@ describe('Delay Factory', function() {
     }));
 
     it('can give the time difference in minutes', function() {
-      var output = timeDiff.calculate(sample_data);
-      expect(output.callingPoints[0].delay).toEqual(10);
+      var output = timeDiff.calculate(lateData);
+      expect(output.callingPoints[0].delay).toEqual('10 min late');
+    });
+
+    it('returns an on time message if no delay', function() {
+      var output = timeDiff.calculate(onTimeData);
+      expect(output.callingPoints[0].delay).toEqual('On time');
     });
 
   });
