@@ -1,14 +1,33 @@
 describe('trainlineInfoController', function() {
   beforeEach(module('TrainlineApp'));
 
-  var ctrl;
+  describe('initialization', function() {
 
-  beforeEach(inject(function($controller) {
-    ctrl = $controller('trainlineInfoController');
-  }));
+    var ctrl, fakeFetch, scope;
 
-  it('initializes with no journey info', function() {
-    expect(ctrl.journeyInfo).toBeUndefined();
+    beforeEach(function() {
+      module(function($provide) {
+        fakeFactory = jasmine.createSpyObj('fakeFactory', ['fetch']);
+        $provide.factory('JsonFetcher', function() {
+          return fakeFactory;
+        });
+      });
+    });
+
+    beforeEach(inject(function($q, $rootScope, $controller) {
+      scope = $rootScope;
+      fakeFactory.fetch.and.returnValue($q.when({
+        data: "Fake data"
+      }));
+      ctrl = $controller('trainlineInfoController');
+    }));
+
+    it('fetches departure info from factory', function() {
+      scope.$apply();
+      expect(ctrl.departureBoardInfo).toEqual("Fake data");
+    });
+
   });
+
 
 });

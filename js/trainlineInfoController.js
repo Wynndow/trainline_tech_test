@@ -1,14 +1,9 @@
-trainlineInfo.controller('trainlineInfoController', ['$http', function($http) {
+trainlineInfo.controller('trainlineInfoController', ['JsonFetcher', function(JsonFetcher) {
 
  var self = this;
 
+ JsonFetcher.fetch().then(function(response) {
+   self.departureBoardInfo = response.data;
+ });
+
 }]);
-
-
-
-
-
-
-// self.trainInfo = $http.get('ldb.json').success(function(data) {
-//   self.trainInfo = data;
-// });

@@ -12,8 +12,10 @@
 
   <body ng-controller="trainlineInfoController as ctrl">
 
-    <!-- <p>Here it is {{ctrl.trainInfo}}</p> -->
-    <h1> HERE: {{ctrl.trainInfo}} </h1>
+
+    <p ng-repeat="point in ctrl.departureBoardInfo.callingPoints">
+      {{point.station}}, {{point.scheduled}}, {{point.expected}}, {{point.actual}}, {{point.platform}}
+    </p>
   </body>
 
 </html>

@@ -9,7 +9,7 @@ describe('trainlineJsonFactory', function() {
     jsonFetcher = JsonFetcher;
     httpBackend = $httpBackend;
     httpBackend
-      .when("GET", 'ldb.json')
+      .expectGET('ldb.json')
       .respond({
         callingpoints: "Calling Points"
       });
