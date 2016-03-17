@@ -1,0 +1,71 @@
+body {
+  font-family: helvetica
+}
+
+.container {
+  width: 500px;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.title {
+  width: 480px;
+  height: 40px;
+  padding: 10px;
+  background-color: lightgrey;
+  color: navy;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scheduled {
+  display: inline-block;
+  width: 75px;
+  margin-right: 25px;
+  font-size: 1.75em;
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.littleSpace {
+  width: 5%;
+}
+
+.station {
+  display: inline-block;
+  width: 400px;
+  font-size: 1.75em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.expected {
+  display: inline-block;
+  width: 75px;
+  margin-right: 25px;
+  font-size: 1em;
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.delay {
+  display: inline-block;
+  width: 300px;
+  font-size: 1em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.platform {
+  display: inline-block;
+  width: 100px;
+  font-size: 1em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

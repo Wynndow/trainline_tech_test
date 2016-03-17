@@ -9,7 +9,7 @@ describe('trainlineJsonFactory', function() {
     jsonFetcher = JsonFetcher;
     httpBackend = $httpBackend;
     httpBackend
-      .expectGET('ldb.json')
+      .whenGET('ldb.json')
       .respond({
         callingpoints: "Calling Points"
       });
@@ -22,8 +22,8 @@ describe('trainlineJsonFactory', function() {
 
   it('fetches the JSON data', function() {
     jsonFetcher.fetch()
-      .then(function(responce) {
-        expect(responce.data.callingpoints).toEqual("Calling Points");
+      .then(function(response) {
+        expect(response.data.callingpoints).toEqual("Calling Points");
       });
     httpBackend.flush();
   });

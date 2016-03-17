@@ -1,23 +1,34 @@
 <!doctype html>
 <html ng-app="TrainlineApp">
-  <head>
-    <title>Trainline tech test</title>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/trainlineInfoController.js"></script>
-    <script src="js/trainlineJsonFactory.js"></script>
-    <script src="js/trainlineDelayFactory.js"></script>
 
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Trainline tech test</title>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/trainlineInfoController.js"></script>
+  <script src="js/trainlineJsonFactory.js"></script>
+  <script src="js/trainlineDelayFactory.js"></script>
+</head>
 
-  </head>
+<body ng-controller="trainlineInfoController as ctrl">
 
-  <body ng-controller="trainlineInfoController as ctrl">
-
-
-    <p ng-repeat="point in ctrl.departureBoardInfo.callingPoints">
-      {{point.station}}, {{point.scheduled}}, {{point.expected}}, {{point.delay}}, {{point.actual}}, {{point.platform}}
-    </p>
-  </body>
+<section class="container">
+  <div class="title"><strong>{{ctrl.departureBoardInfo.journey.scheduled}}</strong> {{ctrl.departureBoardInfo.journey.origin}} to {{ctrl.departureBoardInfo.journey.destination}}</div>
+  <section ng-repeat="point in ctrl.departureBoardInfo.callingPoints">
+    <div>
+      <div class="scheduled">{{point.scheduled}}</div
+      ><div class="station">{{point.station}}</div>
+    </div>
+    <div>
+      <div class="expected" ng-hide="point.scheduled == point.actual">{{point.actual || point.expected}}</div
+      ><div class="expected" ng-show="point.scheduled == point.actual"></div
+      ><div class="delay">{{point.delay}}</div
+      ><div class="platform">Platform {{point.platform}}</div>
+    </div>
+  </section>
+</section>
+</body>
 
 </html>

@@ -1,4 +1,4 @@
-trainlineInfo.factory('JsonFetcher', function($http) {
+trainlineInfo.factory('JsonFetcher', function($http, $resource) {
 
   return {
     fetch: function() {
