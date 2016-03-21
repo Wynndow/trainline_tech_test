@@ -25,7 +25,7 @@
       <div class="expected" ng-hide="point.scheduled == point.actual">{{point.actual || point.expected}}</div
       ><div class="expected" ng-show="point.scheduled == point.actual"></div
       ><div class="delay">{{point.delay}}</div
-      ><div class="platform">Platform {{point.platform}}</div>
+      ><div class="platform">Platform {{point.platform == "" ? '-' : point.platform}}</div>
     </div>
   </section>
 </section>
